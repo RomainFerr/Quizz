@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+class Question {
+- id : int
+- intitule : string
+- reponses : array
+- bonnereponse : string
+}
+
+
+class Theme {
+- id : int
+- libelle : string
+}
+
+Theme "1..1"--"0..*" Question
+
+
+@enduml

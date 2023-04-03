@@ -29,16 +29,17 @@ class QuestionController extends AbstractController
 
 
 
-    #[Route('/api/themes', name: 'app_themes')]
+    #[Route('/api/themes', name: 'app_themes', priority: 1)]
     public function themes(SerializerInterface $serializer): Response
     {
         $themes = $this->themeRepository->findAll();
         $themesJSON = $serializer->serialize($themes,'json',['groups' => 'list_themes']);
-
         return new Response($themesJSON, Response::HTTP_OK, ["content-type" => "application/json"]);
     }
 
-    #[Route('/api/themes/{theme}/{nb_questions}', name: 'app_themes')]
+
+
+    #[Route('/api/themes/{theme}/{nb_questions}', name: 'app_question')]
     public function questions($theme,$nb_questions, SerializerInterface $serializer): Response
     {
         $themeId = $this->themeRepository->findOneBy(['libelle'=>$theme]);

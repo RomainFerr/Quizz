@@ -27,7 +27,7 @@ class Question
     private array $reponses = [];
 
     #[ORM\Column(length: 255)]
-/*    #[Groups(['questions','par_themes'])]*/
+   #[Groups(['questions','par_themes'])]
 
     private ?string $bonnereponse = null;
 

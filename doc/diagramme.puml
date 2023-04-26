@@ -3,7 +3,6 @@
 
 
 class Question {
-- id : int
 - intitule : string
 - reponses : array
 - bonnereponse : string
@@ -11,7 +10,6 @@ class Question {
 
 
 class Theme {
-- id : int
 - libelle : string
 }
 

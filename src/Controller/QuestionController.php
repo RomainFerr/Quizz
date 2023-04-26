@@ -53,7 +53,7 @@ class QuestionController extends AbstractController
        for ($i=$nb_questions;$i>=1;$i=$i-1){
             array_push($questions_array,$questions_theme[$i-1]);
         }
-
+       
         $questions_themeJson = $serializer->serialize( $questions_array,'json',['groups' => 'par_themes']);
 
         return new Response($questions_themeJson, Response::HTTP_OK, ["content-type" => "application/json"]);

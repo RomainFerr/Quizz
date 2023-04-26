@@ -43,6 +43,7 @@ class QuestionController extends AbstractController
     public function questions($theme,$nb_questions, SerializerInterface $serializer): Response
     {
         $themeId = $this->themeRepository->findOneBy(['libelle'=>$theme]);
+        if ($themeId <> null){
         $questions_theme=$this->questionRepository->findBy(['theme'=>$themeId]);
        shuffle($questions_theme);
 
@@ -53,10 +54,16 @@ class QuestionController extends AbstractController
        for ($i=$nb_questions;$i>=1;$i=$i-1){
             array_push($questions_array,$questions_theme[$i-1]);
         }
-       
+
         $questions_themeJson = $serializer->serialize( $questions_array,'json',['groups' => 'par_themes']);
 
         return new Response($questions_themeJson, Response::HTTP_OK, ["content-type" => "application/json"]);
+        } else {
+
+            return new Response("Thème introuvable", 404, ["content-type" => "application/json"]);
+
+        }
+
     }
 
 

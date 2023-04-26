@@ -58,9 +58,10 @@ class QuestionController extends AbstractController
         $questions_themeJson = $serializer->serialize( $questions_array,'json',['groups' => 'par_themes']);
 
         return new Response($questions_themeJson, Response::HTTP_OK, ["content-type" => "application/json"]);
+
         } else {
 
-            return new Response("Thème introuvable", 404, ["content-type" => "application/json"]);
+            return new Response("Thème Introuvable !", 404, ["content-type" => "application/json"]);
 
         }
 

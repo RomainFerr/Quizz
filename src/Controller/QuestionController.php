@@ -47,6 +47,8 @@ class QuestionController extends AbstractController
             return new Response("Thème Introuvable !", 404, ["content-type" => "application/json"]);
 
         } else {
+// select * from table where ... order by rand() limit = $nb_questions
+
 
             $questions_theme=$this->questionRepository->findBy(['theme'=>$themeId]);
             shuffle($questions_theme);
